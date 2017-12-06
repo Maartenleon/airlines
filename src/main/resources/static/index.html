@@ -14,6 +14,11 @@
     <!-- Import JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+    <!-- modal -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Datatables -->
     <Link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -22,7 +27,7 @@
 
     <link rel="stylesheet" href="css/airplane.css">
 
-    !-- bootstrap js -->
+    <!-- bootstrap js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/airplane.js"></script>
 
@@ -35,6 +40,32 @@
 
     <br>
     <div class="container">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Airplane</button>
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <select id="airplaneType">
+                            <option value="Boeing747">Boeing747</option>
+                            <option value="Airbus">Airbus</option>
+                            <option value="Flyingcarpet">Flyingcarpet</option>
+                        </select>
+                    <select id="airport">
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="Berlinl">Berlin</option>
+                        <option value="London">London</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Stockholm">Stockholm</option>
+                    </select>
+                        <input id="fuel" type="number" name="amount of fuel" value=5>
+                        <button type="button" class="btn btn-default"  onclick="postNewAirplane();">Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
         <!-- Datatable T1 -->
         <h2>Airplane inventory</h2>
         <table id="dataTable" class="table">
@@ -50,64 +81,6 @@
             </tbody>
         </table>
     </div>
-
-    <div class="modal fade" id="airplaneModal">
-        <div class="modal-dialog">
-            <div class="modal-content" id="bookingModalContainer">
-                <script>
-            $(document).ready(function(){
-                loadModal("views/createBooking.html", "#airplaneModalContainer");
-            });
-            </script>
-            </div>
-        </div>
     </div>
-
-
-    <!-- input van data D1 -->
-    <div class="container">
-        <form class="formcenter" data-toggle="validator" role="form" id="form">
-            <div class="row form-group">
-                <div class="col-25">
-                    <label for="airplaneType">Airplane Type</label>
-                </div>
-                <div class="col-75">
-                    <select id="airplaneType" class="form-control">
-                        <option value="Boeing747">Boeing747</option>
-                        <option value="Airbus">Airbus</option>
-                        <option value="Flyingcarpet">Flyingcarpet</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-25">
-                    <label for="airport">Airport Location</label>
-                </div>
-                <div class="col-75">
-                    <select id="airport" class="form-control">
-                        <option value="Amsterdam">Amsterdam</option>
-                        <option value="Berlinl">Berlin</option>
-                        <option value="London">London</option>
-                        <option value="Paris">Paris</option>
-                        <option value="Stockholm">Stockholm</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-25">
-                    <label for="fuel">Amount of fuel</label>
-                </div>
-
-                <div class="col-75">
-                    <input id="fuel" type="number" name="amount of fuel" value=5>
-                </div>
-            </div>
-                <div class="row form-group">
-                    <input id="submitButton" type="submit" onclick="postNewAirplane();"add new airplane>
-                </div>
-        </form>
-    </div>
-
-</div>
 </body>
 </html>

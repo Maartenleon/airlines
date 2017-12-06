@@ -2,6 +2,7 @@ package com.maarten.airlines.airlines;
 
 import com.maarten.airlines.airlines.models.Airplane;
 import com.maarten.airlines.airlines.models.AirplaneType;
+import com.maarten.airlines.airlines.models.Airport;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,13 +10,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
 public class AirlinesApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
 
 	@SpringBootTest
 	public class RoomModelTests {
@@ -26,17 +24,16 @@ public class AirlinesApplicationTests {
 		 * Create a new airplane object for each test
 		 */
 		@Before
-		public void initialize(){
+		public void initialize() {
 			testAirplane = new Airplane();
 		}
 
 		/**
 		 * Checks if the get returns the value specified in the set
 		 */
-		
 
 		@Test
-		public void AirplaneTypeTest(){
+		public void AirplaneTypeTest() {
 
 			AirplaneType airplaneType = AirplaneType.Boeing747;
 
@@ -45,37 +42,17 @@ public class AirlinesApplicationTests {
 			Assert.assertEquals(testAirplane.getAirplaneType(), airplaneType);
 		}
 
-
-
-
-
-
-
-
 		/**
 		 * Checks if the get returns the value specified in the set
 		 */
 		@Test
-		public void roomTypeTest(){
+		public void AirPortTypeTest() {
+			Airport airport = Airport.Amsterdam;
 
-			RoomType roomType = RoomType.Normal;
+			testAirplane.setAirport(airport);
 
-			testRoom.setRoomType(roomType);
-
-			Assert.assertEquals(testRoom.getRoomType(), roomType);
+			Assert.assertEquals(testAirplane.getAirport(), airport);
 		}
-
-		/**
-		 * Checks if the get returns the value specified in the set
-		 */
-		@Test
-		public void roomSizeTest(){
-
-			RoomSize roomSize = RoomSize.TwoPerson;
-
-			testRoom.setRoomSize(roomSize);
-
-			Assert.assertEquals(testRoom.getRoomSize(), roomSize);
-		}
+	}
 
 }
