@@ -1,6 +1,7 @@
 package com.maarten.airlines.airlines.controllers;
 
 import com.maarten.airlines.airlines.models.Airplane;
+import com.maarten.airlines.airlines.models.Airport;
 import com.maarten.airlines.airlines.repository.AirplaneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,9 @@ public class AirplaneController {
      * this function is meant to delete one airplane
      * @delete one airplane information
      **/
-    @RequestMapping(value = "delete", method = RequestMethod.DELETE)
-    public void removeAirplane(Airplane airplane) {airplaneRepository.delete(airplane);}
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public void removeAirplane(@PathVariable long id) {
+        Airplane airplane = airplaneRepository.findOne(id);
+        airplaneRepository.delete(airplane);
+    }
 }
