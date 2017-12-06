@@ -51,25 +51,48 @@
         </table>
     </div>
     <br>
+    <!-- input van data D1 -->
     <div class="container">
-        <!-- input van data D1 -->
-        <input id="airplaneTpe" type="select" name="artist" value="airplane type">
-            <option value="Boeing747">Boeing747</option>
-            <option value="Airbus">Airbus</option>
-            <option value="Flyingcarpet">Flyingcarpet</option>
-        <input id="airport" type="select" name="airport location" value="title">
-            <option value="">Budget</option>
-            <option value="Normal">Normal</option>
-            <option value="Luxurious">Luxurious</option>
-            <option value="Budget">Budget</option>
-            <option value="Normal">Normal</option>
-        <
-        <input id="fuel" type="number" name="amount of fuel" value=5>
-        <button type="button" onclick="postNewAirplane();">add new airplane</button>
-    </div>
-</div>
+        <form class="formcenter" data-toggle="validator" role="form" id="form">
+            <div class="row form-group">
+                <div class="col-25">
+                    <label for="airplaneType">Airplane Type</label>
+                </div>
+                <div class="col-75">
+                    <select id="airplaneType" class="form-control">
+                        <option value="Boeing747">Boeing747</option>
+                        <option value="Airbus">Airbus</option>
+                        <option value="Flyingcarpet">Flyingcarpet</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-25">
+                    <label for="airport">Airport Location</label>
+                </div>
+                <div class="col-75">
+                    <select id="airport" class="form-control">
+                        <option value="Amsterdam">Amsterdam</option>
+                        <option value="Berlinl">Berlin</option>
+                        <option value="London">London</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Stockholm">Stockholm</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-25">
+                    <label for="fuel">Amount of fuel</label>
+                </div>
 
-
+                <div class="col-75">
+                    <input id="fuel" type="number" name="amount of fuel" value=5>
+                </div>
+            </div>
+                <div class="row form-group">
+                    <button type="button" onclick="postNewAirplane();">add new airplane</button>
+                </div>
+        </form>
 
 
 </body>
