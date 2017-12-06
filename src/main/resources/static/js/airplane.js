@@ -1,5 +1,8 @@
 api = "http://localhost:8080/api/airplane/";
 
+
+
+
 function getAirplaneData() {
     console.log("getting data...");
 
@@ -54,3 +57,16 @@ function postNewAirplane(){
     });
 
 }
+
+//Form validator
+$('#form').validator().on('submit', function (e) {
+      if (e.isDefaultPrevented()) {
+        // invalid form, nothing happens
+      } else {
+        // Do something
+        postForm();
+        // Prevent default form action
+        e.preventDefault();
+      }
+    });
+

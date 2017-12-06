@@ -50,7 +50,20 @@
             </tbody>
         </table>
     </div>
-    <br>
+
+    <div class="modal fade" id="airplaneModal">
+        <div class="modal-dialog">
+            <div class="modal-content" id="bookingModalContainer">
+                <script>
+            $(document).ready(function(){
+                loadModal("views/createBooking.html", "#airplaneModalContainer");
+            });
+            </script>
+            </div>
+        </div>
+    </div>
+
+
     <!-- input van data D1 -->
     <div class="container">
         <form class="formcenter" data-toggle="validator" role="form" id="form">
@@ -90,10 +103,11 @@
                 </div>
             </div>
                 <div class="row form-group">
-                    <button type="button" onclick="postNewAirplane();">add new airplane</button>
+                    <input id="submitButton" type="submit" onclick="postNewAirplane();"add new airplane>
                 </div>
         </form>
+    </div>
 
-
+</div>
 </body>
 </html>
