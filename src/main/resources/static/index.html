@@ -1,10 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- import airplane.css stylesheet -->
+    <link rel="stylesheet" href="css/airplane.css">
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>XYZ Airlines</title>
+
+    <!-- Import Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Import JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Datatables -->
+    <Link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src=" https://cdn.datatables.net/select/1.2.3/js/dataTables.select.min.js"></script>
+    <Link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css">
+
+    <link rel="stylesheet" href="css/airplane.css">
+
+    !-- bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/airplane.js"></script>
+
+
+
 </head>
 <body>
+
+<div class="bg">
+
+    <br>
+    <div class="container">
+        <!-- Datatable T1 -->
+        <h2>Airplane inventory</h2>
+        <table id="dataTable" class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>airplaneType</th>
+                <th>airport</th>
+                <th>fuel</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="container">
+        <!-- input van data D1 -->
+        <input id="airplaneTpe" type="select" name="artist" value="airplane type">
+            <option value="Boeing747">Boeing747</option>
+            <option value="Airbus">Airbus</option>
+            <option value="Flyingcarpet">Flyingcarpet</option>
+        <input id="airport" type="select" name="airport location" value="title">
+            <option value="">Budget</option>
+            <option value="Normal">Normal</option>
+            <option value="Luxurious">Luxurious</option>
+            <option value="Budget">Budget</option>
+            <option value="Normal">Normal</option>
+        <
+        <input id="fuel" type="number" name="amount of fuel" value=5>
+        <button type="button" onclick="postNewAirplane();">add new airplane</button>
+    </div>
+</div>
+
+
+
 
 </body>
 </html>

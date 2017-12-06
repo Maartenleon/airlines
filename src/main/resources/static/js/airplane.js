@@ -6,10 +6,10 @@ function getAirplaneData() {
     $.ajax({
         url: "http://localhost:8080/api/airplane/all",
         type: "GET",
-        success: function(music) {
+        success: function(airplane) {
 
              $('#dataTable').DataTable().clear();
-             $('#dataTable').DataTable().rows.add(music);
+             $('#dataTable').DataTable().rows.add(airplane);
              $('#dataTable').DataTable().columns.adjust().draw();
         }
     });
@@ -29,6 +29,7 @@ $(document).ready(function(){
     getAirplaneData();
 });
 
+//Post functie
 function postNewAirplane(){
     var airplaneTypeNewAirplane = $('#airplaneType').val();
     var airportNewAirplane = $('#airport').val();
@@ -40,7 +41,7 @@ function postNewAirplane(){
         fuel : fuelNewAirplane
     };
 
-    var validJsonMusic = JSON.stringify(newAirplane);
+    var validJsonAirplane = JSON.stringify(newAirplane);
 
     $.ajax({
         url: "http://localhost:8080/api/airplane/add",
