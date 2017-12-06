@@ -1,32 +1,45 @@
 package com.maarten.airlines.airlines.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class Airplane {
 
+    /**
+     * variables
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @NotNull
-    private String AirplaneType;
+    private AirplaneType airplaneType;
 
     @NotNull
     private Airport airport;
 
-    private int Fuel;
+    private int fuel;
 
+    /**
+     * constructors
+     */
     public Airplane (){}
 
-    public Airplane(Long id, String airplaneType, Airport airport, int fuel) {
+    public Airplane(Long id, AirplaneType airplaneType, Airport airport, int fuel) {
         this.id = id;
-        AirplaneType = airplaneType;
+        this.airplaneType = airplaneType;
         this.airport = airport;
-        Fuel = fuel;
+        this.fuel = fuel;
     }
+
+    /**
+     * getters and setters
+     * @return
+     */
 
     public Long getId() {
         return id;
@@ -36,12 +49,12 @@ public class Airplane {
         this.id = id;
     }
 
-    public String getAirplaneType() {
-        return AirplaneType;
+    public AirplaneType getAirplaneType() {
+        return airplaneType;
     }
 
-    public void setAirplaneType(String airplaneType) {
-        AirplaneType = airplaneType;
+    public void setAirplaneType(AirplaneType airplaneType) {
+        this.airplaneType = airplaneType;
     }
 
     public Airport getAirport() {
@@ -53,11 +66,11 @@ public class Airplane {
     }
 
     public int getFuel() {
-        return Fuel;
+        return fuel;
     }
 
     public void setFuel(int fuel) {
-        Fuel = fuel;
+        this.fuel = fuel;
     }
 }
 
