@@ -36,7 +36,7 @@ $(document).ready(function(){
 function postNewAirplane(){
     var airplaneTypeNewAirplane = $('#airplaneType').val();
     var airportNewAirplane = $('#airport').val();
-    var lengthNewAirplane = $('#fuel').val();
+    var fuelNewAirplane = $('#fuel').val();
 
     var newAirplane = {
         airplaneType : airplaneTypeNewAirplane,
