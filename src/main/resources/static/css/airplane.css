@@ -1,0 +1,26 @@
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    max-width: 750px;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://images.unsplash.com/reserve/GBjvTQTou2D0KTHomMoA_IMG_1568.JPG?auto=format&fit=crop&w=1940&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
