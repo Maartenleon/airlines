@@ -53,7 +53,7 @@ $(document).ready(function(){
 
     $('#errorCancel').click( function () {
         $("#errorModal").modal("toggle");
-    } ); 
+    } );
 
     getAirplaneData();
 });
@@ -173,6 +173,14 @@ function putData(){
     selectedAirplaneData.airplaneType = $("#editAirplaneType").val();
     selectedAirplaneData.airport = $("#editAirport").val();
     selectedAirplaneData.fuel = $("#editFuel").val();
+
+    if(selectedAirplaneData.fuel < 2) {
+        return;
+    }
+    else {
+        selectedAirplaneData.fuel = selectedAirplaneData.fuel - 2;
+    }
+
 
     var selectedAirplaneJson = JSON.stringify(selectedAirplaneData);
 
