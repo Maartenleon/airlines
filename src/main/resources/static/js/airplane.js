@@ -1,6 +1,6 @@
 api = "http://localhost:8080/api/airplane/";
 
-
+var isChecked = false;
 
 //Get data in datatable
 function getAirplaneData() {
@@ -18,6 +18,7 @@ function getAirplaneData() {
     });
 }
 
+//dataTable
 $(document).ready(function(){
     $("#dataTable").DataTable({
         select: {
@@ -39,11 +40,32 @@ $(document).ready(function(){
         }]
     });
 
+    //validation checkbox
+    $('input[name=checkbox]').change(function(){
+        if($(this).is(':checked')) {
+            // checkbox is checked
+            isChecked = true;
+        } else {
+            // Checkbox is not checked..
+             isChecked = false;
+        }
+    });
+
+    $('#errorCancel').click( function () {
+        $("#errorModal").modal("toggle");
+    } ); 
+
     getAirplaneData();
 });
 
 //Post functie
 function postNewAirplane(){
+
+    if(!isChecked){
+        console.log('You must tick the checkbox.');
+        $('#errorModal').modal("toggle");
+        return;
+    }
     var airplaneTypeNewAirplane = $('#airplaneType').val();
     var airportNewAirplane = $('#airport').val();
     var fuelNewAirplane = $('#fuel').val();
@@ -68,15 +90,13 @@ function postNewAirplane(){
 
 }
 
-
-
 function getSelectAirplane(){
     $('#dataTable > tbody > tr.selected').each(function(i,row){
         getObjectAndSetInputFields(row);
     });
 }
 
-// Remove selected guest
+// Remove selected airplane
 function removeSelectedAirplane(){
     $('#dataTable > tbody > tr.selected').each(function(i,row){
         getAirplaneAndRemoveIt(row);
@@ -104,3 +124,73 @@ function getAirplaneAndRemoveIt(row){
         }
     });
 }
+
+var currentId;
+
+// Populate the modal with a object
+function getObjectAndSetInputFields(row) {
+
+    // Get data of datatable
+    var table = $("#dataTable").DataTable();
+    // get object of the row
+    var dataObject = table.row(row).data();
+    // Save the id of the current airplanes in the variable
+    currentId = dataObject.id;
+    // Populate al inputfield in the modal
+    $("#editAirplaneType").val(dataObject.airplaneType);
+    $("#editAirport").val(dataObject.airport);
+    $("#editFuel").val(dataObject.fuel);
+
+    /// Opens the modal in AirplaneOverview
+    $('#editModal').modal('show');
+}
+
+
+// Posts the data to the server
+function postData(airplane){
+    $.ajax({
+        url:"http://localhost:8080/api/hotel/airplane/add",
+        type:"post",
+        data: airplane,
+        contentType: "application/json",
+        success: function(result){
+            console.log("Added airplane.");
+
+            // Close the modal
+            $("#myModal").modal("toggle");
+            // Get the airplanes again
+            getAirplaneData();
+            // Show confirmation!
+            $("#airplaneAddedMessage").show();
+        }
+    });
+}
+
+function putData(){
+
+    var selectedAirplaneData = {};
+    selectedAirplaneData.id = currentId;
+    selectedAirplaneData.airplaneType = $("#editAirplaneType").val();
+    selectedAirplaneData.airport = $("#editAirport").val();
+    selectedAirplaneData.fuel = $("#editFuel").val();
+
+    var selectedAirplaneJson = JSON.stringify(selectedAirplaneData);
+
+    $.ajax({
+        url:"http://localhost:8080/api/airplane/update/",
+        type:"put",
+        data: selectedAirplaneJson,
+        contentType: "application/json",
+        success: function(result){
+            console.log("Updated airplane.");
+
+            // Close the modal
+            $("#editModal").modal("toggle");
+            // Get the airplanes again
+            getAirplaneData();
+            // Show confirmation!
+            $("#airplaneUpdatedMessage").show();
+        }
+    });
+}
+

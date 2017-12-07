@@ -38,14 +38,24 @@
 </head>
 <body>
 
-<div class="bg">
 
-    <br>
+<div class="bg">
+<br>
     <div class="container">
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">+ Add Airplane</button>
-        <button type="button" class="btn btn-danger" onclick="removeSelectedAirplane()">&times; Delete Airplane</button>
+        <button type="button" class="btn btn-info" onclick="getSelectAirplane()">Edit</button>
+        <button type="button" class="btn btn-info" onclick="removeSelectedAirplane()">&times; Delete Airplane</button>
 
+        <div id="editModalHolder">
+            <script>
+                $(document).ready(function() {
+                    $("#editModalHolder").load("views/airplaneEdit.html");
+                })
+            </script>
+        </div>
+
+        <!-- modal with add airplane funciton-->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -53,23 +63,37 @@
                         <select id="airplaneType">
                             <option value="Boeing747">Boeing747</option>
                             <option value="Airbus">Airbus</option>
-                            <option value="Flyingcarpet">Flyingcarpet</option>
+                            <option value="FlyingCarpet">Flying carpet</option>
                         </select>
-                    <select id="airport">
-                        <option value="Amsterdam">Amsterdam</option>
-                        <option value="Berlinl">Berlin</option>
-                        <option value="London">London</option>
-                        <option value="Paris">Paris</option>
-                        <option value="Stockholm">Stockholm</option>
-                    </select>
-                        <input id="fuel" type="number" name="amount of fuel" value=5>
-                        <button type="button" class="btn btn-default"  onclick="postNewAirplane();">Add</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+                        <select id="airport">
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Stockholm">Stockholm</option>
+                        </select>
+                            <input id="fuel" type="number" name="amount of fuel" value=5>
+                        <input type="checkbox" name="checkbox" id="checkBoxConfirmation" class="form-control" required>Accept the agreements
+                        <button type="button" class="btn btn-info"  onclick="postNewAirplane();">Add</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Datatable T1 -->
+            <div class="modal fade" id="errorModal">
+                <div class="modal-dialog">
+                    <div class="model-content" id="errorContainer">
+                        <h1>Please tick the box</h1>
+                        <button type="button" class="btn btn-warning" id="errorCancel">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+<!-- Datatable -->
         <h2>Airplane inventory</h2>
         <br>
         <table id="dataTable" class="table">
@@ -84,7 +108,9 @@
             <tbody>
             </tbody>
         </table>
+
+
     </div>
-    </div>
+</div>
 </body>
 </html>

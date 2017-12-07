@@ -16,6 +16,20 @@ public class AirplaneController {
     @Autowired
     private AirplaneRepository airplaneRepository;
 
+    /**
+     * Update function for airplanes.
+     * @param airplane The new guest to put at a certain place. Keep in mind that the guest with this ID
+     *              will be overwritten.
+     */
+    @RequestMapping(value = "update", method = RequestMethod.PUT)
+    public void updateAirplane(@RequestBody Airplane airplane){
+        if(airplane != null){
+            Airplane guestFromTable = airplaneRepository.findOne(airplane.getId());
+            if(guestFromTable != null){
+                airplaneRepository.save(airplane);
+            }
+        }
+    }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public void addAirplane(@RequestBody Airplane airplane) {airplaneRepository.save(airplane);}
